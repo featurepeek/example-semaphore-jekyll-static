@@ -2,6 +2,7 @@
   "name": "yarn-website",
   "version": "1.0.0",
   "devDependencies": {
+    "@featurepeek/circleci": "^0.0.15",
     "algolia-sitemap": "^2.1.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
