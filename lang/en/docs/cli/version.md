@@ -52,8 +52,8 @@ We will get this updated `package.json`:
 
 #### Git tags <a class="toc" id="toc-git-tags" href="#toc-git-tags"></a>
 
-If you run `yarn version` within a Git repository a
-[Git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) will be created by
+If you run `yarn version` within a Git repository an
+[annotated Git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) will be created by
 default following the format `v0.0.0`.
 
 You can customize the git tag that is created or disable this behavior by using
@@ -100,7 +100,7 @@ When the `yarn version` command is run it will also run the usual lifecycle meth
 - `yarn version`
 - `yarn postversion`
 
-In these scripts you also get some handy environment variables, e.g. `npm_package_version` will in the `preversion` script hold the version before the version change, and in the `postversion` script it will hold the version after the version change. 
+In these scripts you also get some handy environment variables, e.g. `npm_package_version` will in the `preversion` script hold the version before the version change, and in the `postversion` script it will hold the version after the version change.
 
 This becomes useful when using yarn with git to publish new tags. Here is an example of what a package.json file could look like:
 
@@ -112,12 +112,14 @@ This becomes useful when using yarn with git to publish new tags. Here is an exa
   "scripts": {
     "test": "echo \"Running tests for version $npm_package_version...\"",
     "preversion": "yarn test",
-    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
+    "postversion":
+      "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
   }
 }
 ```
 
 Running `yarn version` would look something like this:
+
 ```
 info Current version: 1.0.2
 Running tests for version 1.0.2...
@@ -151,6 +153,22 @@ Creates a new version specified by `<version>`.
 ##### `yarn version --patch` <a class="toc" id="toc-yarn-version-patch" href="#toc-yarn-version-patch"></a>
 
 Creates a new version by incrementing the major, minor, or patch number of the current version.
+
+##### `yarn version --premajor` <a class="toc" id="toc-yarn-version-premajor" href="#toc-yarn-version-premajor"></a>
+
+##### `yarn version --preminor` <a class="toc" id="toc-yarn-version-preminor" href="#toc-yarn-version-preminor"></a>
+
+##### `yarn version --prepatch` <a class="toc" id="toc-yarn-version-prepatch" href="#toc-yarn-version-prepatch"></a>
+
+Creates a new prerelease version by incrementing the major, minor, or patch number of the current version and adding a prerelease number.
+
+##### `yarn version --prerelease` <a class="toc" id="toc-yarn-version-prerelease" href="#toc-yarn-version-prerelease"></a>
+
+Increments the prerelease version number keeping the main version.
+
+##### `yarn version [--premajor | --preminor | --prepatch | --prerelease] --preid <pre-identifier>` <a class="toc" id="toc-yarn-version-preid" href="#toc-yarn-version-preid"></a>
+
+Adds an identifier specified by `<pre-identifier>` to be used to prefix premajor, preminor, prepatch or prerelease version increments.
 
 ##### `yarn version --no-git-tag-version` <a class="toc" id="toc-yarn-version-no-git-tag-version" href="#toc-yarn-version-no-git-tag-version"></a>
 

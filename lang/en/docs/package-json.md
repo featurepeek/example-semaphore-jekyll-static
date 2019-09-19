@@ -270,7 +270,7 @@ Your package can include runnable scripts or other configuration.
 
 Scripts are a great way of automating tasks related to your package, such as simple build processes or development tools. Using the `"scripts"` field, you can define various scripts to be run as `yarn run <script>`. For example, the `build-project` script above can be invoked with `yarn run build-project` and will run `node build-project.js`.
 
-Certain script names are special. If defined, the `preinstall` script is called by yarn before your package is installed. For compatibility reasons, scripts called `install`, `postinstall`, and `prepublish` will all be called after your package has finished installing.
+Certain script names are special. If defined, the `preinstall` script is called by yarn before your package is installed. For compatibility reasons, scripts called `install`, `postinstall`, `prepublish`, and `prepare` will all be called after your package has finished installing.
 
 The `start` script value defaults to `node server.js`.
 
@@ -376,7 +376,7 @@ Note that if your `package.json` contains `"flat": true` and other packages depe
 
 Allows you to override a version of a particular nested dependency. See [the Selective Versions Resolutions RFC](https://github.com/yarnpkg/rfcs/blob/master/implemented/0000-selective-versions-resolutions.md) for the full spec.
 
-Note that installing dependencies via [`yarn install --flat`] will automatically add a `resolutions` block to your `package.json` file.
+Note that installing dependencies via [`yarn install --flat`]({{url_base}}/docs/cli/install#toc-yarn-install-flat) will automatically add a `resolutions` block to your `package.json` file.
 
 ## System <a class="toc" id="toc-system" href="#toc-system"></a>
 
